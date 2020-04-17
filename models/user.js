@@ -8,7 +8,20 @@ const user = new Schema({
     Date: {
         type: String,
         default: Date.now
-    }
+    },
+    cart:[
+        {
+            productid:mongoose.Schema.Types.ObjectId,
+            quantity:Number
+        }
+        
+    ],
+    orderList:[
+        {
+            productid:mongoose.Schema.Types.ObjectId,
+            quantity:Number
+        }
+    ]
 })
 //model
 const users = mongoose.model('users', user)
