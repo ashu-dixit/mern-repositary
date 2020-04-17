@@ -21,7 +21,6 @@ app.use(cookieSession({
     maxAge: 6*60*60*1000,
     keys: [keys.session.key]
 }))
-
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -36,7 +35,7 @@ app.use('/auth',require('./routes/authentic'))
 const MONGODB_URI = keys.mongodb.MONGODB_URI
 mongoose.connect(MONGODB_URI,{
     useNewUrlParser:true,
-    useUnifiedTopology:true
+    useUnifiedTopology:true 
 })
 
 app.listen(PORT, console.log('sever is starting at '+ PORT))

@@ -7,7 +7,7 @@ import Card from './card'
 function Cart() {
     
                            
-    var lst=[<div className="card-env"><Card /></div>, <div className="card-env"><Card /></div>, <div className="card-env"><Card /></div>]
+    var lst=[<div key="1" className="card-env"><Card /></div>, <div key="2" className="card-env"><Card /></div>, <div key="1" className="card-env"><Card /></div>]
     const [show, setShow] = React.useState(false);
 
     const handleClose = () => setShow(false);

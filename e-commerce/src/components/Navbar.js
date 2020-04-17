@@ -3,7 +3,6 @@ import { Navbar, Nav, NavItem, NavLink } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faSearch } from '@fortawesome/free-solid-svg-icons'
 import Cart from "./ShopCart";
-
 class navbar extends Component {
     
     constructor() {
@@ -13,7 +12,6 @@ class navbar extends Component {
         }
         console.log("Hello")
     }
-
     setshow(bar) {
         this.setState={
             load:bar

@@ -4,13 +4,11 @@ const users = require('./models/user')
 const keys  = require('./config/keys')
 
 passport.serializeUser((user,done) => {
-    done(null,user.id)
+    done(null,user.id)//not google id
 })
 
 passport.deserializeUser((id,done)=>{
-    users.findOne({
-            googleid:id
-        })
+    users.findById(id)
         .then((founduser) => {
         done(null,founduser)
     })
@@ -32,7 +30,7 @@ passport.use(
         .then((userdata) => {
 
             if (userdata) {
-                console.log('User already exist' + userdata.name)
+                console.log('User already exist' + userdata.id)
                 done(null, userdata)
             } else {
                 const data = {

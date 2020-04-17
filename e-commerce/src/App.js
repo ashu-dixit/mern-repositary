@@ -5,17 +5,20 @@ import Corousel from './components/slider'
 import Card from "./components/card";
 import Header from './components/Header'
 import Navbar from './components/Navbar'
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
 
 
 function App() {
   return (
-
-    <div>
-      <div className="header"><Header /></div>
-      <div className="nabs"><Navbar></Navbar></div>
-      <div className="sss"><Corousel></Corousel></div>
+    <Provider store={store}>
+      <div>
+        <div className="header"><Header /></div>
+        <div className="nabs"><Navbar></Navbar></div>
+        <div className="sss"><Corousel></Corousel></div>
         <div className="card-grp">
-        <div className="col-12 pt-5 text-center"><h3 style={{fontSize:"50px"}}>For you</h3></div>
+          <div className="col-12 pt-5 text-center"><h3 style={{ fontSize: "50px" }}>For you</h3></div>
           <div className="card-env"><Card /></div>
           <div className="card-env"><Card /></div>
           <div className="card-env"><Card /></div>
@@ -26,10 +29,10 @@ function App() {
           <div className="card-env"><Card /></div>
           <div className="card-env"><Card /></div>
           <div className="card-env"><Card /></div>
-      </div> 
-      
-    </div>
+        </div>
 
+      </div>
+    </Provider>
   );
 }
 
