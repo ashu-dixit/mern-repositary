@@ -7,14 +7,34 @@ import Navbar from './components/Navbar'
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Products from './components/productList';
-
+import axios from "axios";
 
 // const person = [
 //   { id: 1, name: 'Bruce', skill: 'java' }, { id: 2, name: 'Clark', skill: 'C++' }, { id: 3, name: 'Diana', skill: 'c' }]
 // const newperson = person.map(person => <div key={person.id}><h2>I am {person.name}. I know {person.skill}</h2></div>)
 class App extends Component {
 
+    
+    constructor(){
+      super()
 
+    }
+  buttonfunction(product){
+    axios.post('/product/cart', {
+    data:product
+  })
+  .then(function (response) {
+    console.log("axios"+response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  }
+
+  // debug function
+  // buttonfunction(productid,n){
+  //   console.log(productid+" " + n);
+  // }
 
   // useEffect(() => axios.get('/product/').then((res) => {
   //   productlst=res.data
@@ -30,7 +50,7 @@ class App extends Component {
           <div className="sss"><Corousel></Corousel></div>
           <div className="card-grp">
           <div className="col-12 pt-5 text-center"><h3 style={{ fontSize: "50px" }}>For you</h3></div>
-            <Products link="/product" btnname="Add to Cart"></Products>
+            <Products link="/product" btnname="Add to Cart" buttonfunction={this.buttonfunction.bind(this)}></Products>
 
           </div>
         </div>

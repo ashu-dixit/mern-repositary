@@ -1,25 +1,25 @@
 const route = require('express').Router()
 const product = require('../models/product')
+const users = require('../models/user')
+
 
 route.get('/usercart',(req,res)=>{
     if(req.user){
-    let myArray=req.user.cart
-    let myproducts = []
-    for(let i = 0; i < myArray.length; i++){
-        product.findById(myArray[i].productid)
-        .then((cartproduct)=>{
-            // console.log(cartproduct.productName)            
-            myproducts.push(cartproduct)
-            console.log(myproducts.length)  
-            if(i = myproducts.length-1)
-                res.send(myproducts)    
-            // console.log(myproducts.length)  
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-    }
-    console.log(myproducts.length)  
+    res.send(req.user.cart)
+    // let myproducts = []
+    // for(let i = 0; i < myArray.length; i++){
+    //     product.findById(myArray[i].productid)
+    //     .then((cartproduct)=>{
+    //         // console.log(cartproduct.productName)            
+    //         myproducts.push(cartproduct)
+    //         if(i = myproducts.length-1)
+    //             res.send(myproducts)    
+    //         // console.log(myproducts.length)  
+    //     })
+    //     .catch((error) => {
+    //         console.log(error)
+    //     })
+    // }
 }else{
     res.send("<h6>First Add Product</h6>")
 }
@@ -27,16 +27,11 @@ route.get('/usercart',(req,res)=>{
 })
 
 route.post('/cart',(req,res) => {
-    var newcart = req.user.data.cart
-    newcart.push({
-        productid:req.body.productid,
-        quantity:req.body.quantity
-    })
-    users.findAndModify({
-        query: {_id:req.user.data._id},
-        sort: { rating: 1 },
-        update:{cart:newcart}
-    })
+    var newcart = req.user.cart
+    newcart.push(req.body.data)
+    users.findByIdAndUpdate(req.user._id,{ cart:newcart} )
+    .then((data)=> res.send(data.productName) )
+    .catch((err)=>console.log(error))
 })
 
 

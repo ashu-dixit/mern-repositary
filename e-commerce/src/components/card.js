@@ -3,19 +3,20 @@ import { Card, ListGroup, Button, ListGroupItem } from "react-bootstrap";
 
 
 function card(props) {
-
+    var userproduct=props.product
+    userproduct.quantity = 1
     return (
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={props.photo} />
+            <Card.Img variant="top" src={props.product.picture} />
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
                 <ListGroup>
-                    <ListGroupItem>{props.discription.price}</ListGroupItem>
-                    <ListGroupItem>{props.discription.size}</ListGroupItem>
-                    <ListGroupItem>{props.discription.about}</ListGroupItem>
-                    <ListGroupItem>{props.discription.colour}</ListGroupItem>
+                    <ListGroupItem>{props.product.discription.price}</ListGroupItem>
+                    <ListGroupItem>{props.product.discription.size}</ListGroupItem>
+                    <ListGroupItem>{props.product.discription.about}</ListGroupItem>
+                    <ListGroupItem>{props.product.discription.colour}</ListGroupItem>
                 </ListGroup>
-                <Button variant="secondary">{props.btnname}</Button>
+                <Button variant="secondary" onClick={()=>props.buttonfunction(userproduct)}>{props.btnname}</Button>
             </Card.Body>
         </Card>
     )

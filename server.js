@@ -15,6 +15,7 @@ const keys = require('./config/keys')
 const app = express()
 const PORT = process.env.PORT || 3300
 app.use(express.urlencoded())
+app.use(express.json())
 
 //authentication
 app.use(cookieSession({

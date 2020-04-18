@@ -5,19 +5,19 @@ import {  faSearch } from '@fortawesome/free-solid-svg-icons'
 import Cart from "./ShopCart";
 class navbar extends Component {
     
-    constructor() {
-        super()
-        this.state={
-            load:false
-        }
-        console.log("Hello")
-    }
-    setshow(bar) {
-        this.setState={
-            load:bar
-        }
-        console.log("Hello")
-    }
+    // constructor() {
+    //     super()
+    //     this.state={
+    //         load:false
+    //     }
+    //     console.log("Hello")
+    // }
+    // setshow(bar) {
+    //     this.setState={
+    //         load:bar
+    //     }
+    //     console.log("Hello")
+    // }
 
     render() {
         return (
@@ -36,7 +36,7 @@ class navbar extends Component {
                 <Nav className="nav-icon">
                     <NavItem className="mx-2 search-icon"><NavLink href="#pricing"><FontAwesomeIcon icon={faSearch} /></NavLink></NavItem>
                     <NavItem className="mx-2 search-icon">
-                        <NavLink href="#pricing" onClick={()=>this.setshow(true)} >
+                        <NavLink href="#pricing"  >
                             <Cart/>
                         </NavLink>
                     </NavItem>

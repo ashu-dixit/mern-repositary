@@ -11,7 +11,7 @@ class Products extends Component {
             newpro:[]
         }
     }
-
+   
     UNSAFE_componentWillMount() {
         //getting product from database
         // when you get null error means u are sending before fetching
@@ -22,7 +22,7 @@ class Products extends Component {
                 // console.log(productlst);
                 this.setState({
                     newpro : productlst.map(
-                    product => <div key={product._id} className="card-env"><Card btnname={this.props.btnname} name={product.productName} discription={product.discription} photo={product.picture} >
+                    product => <div key={product._id} className="card-env"><Card buttonfunction={this.props.buttonfunction} btnname={this.props.btnname} product={product} >
                         </Card>
                     </div>)})
                 

@@ -13,14 +13,62 @@ const user = new Schema({
     photo: String,
     cart: [
         {
-            productid: String,
-            quantity: Number
+            _id: mongoose.Schema.Types.ObjectId,
+            quantity: Number,
+            productName: {
+                type: String,
+                required: true
+            },
+            discription: {
+                about:String,
+                size: String,
+                colour: String,
+                price: String,
+                discount:{
+                    type:String,
+                    default:0
+                }
+            },
+            supplierid: String,
+            categoryid: String,
+            stock: {
+                type: Number,
+                required:true
+            },
+            picture: {
+                type: String,
+                require:true
+            }
         }
     ],
     orderList: [
-        {
-            productid: String,
-            quantity: Number
+        {   
+            _id: mongoose.Schema.Types.ObjectId,
+            quantity: Number,
+            productName: {
+                type: String,
+                required: true
+            },
+            discription: {
+                about:String,
+                size: String,
+                colour: String,
+                price: String,
+                discount:{
+                    type:String,
+                    default:0
+                }
+            },
+            supplierid: String,
+            categoryid: String,
+            stock: {
+                type: Number,
+                required:true
+            },
+            picture: {
+                type: String,
+                require:true
+            }
         }
     ],
     address: {
