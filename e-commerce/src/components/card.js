@@ -16,7 +16,8 @@ function card(props) {
                     <ListGroupItem>{props.product.discription.about}</ListGroupItem>
                     <ListGroupItem>{props.product.discription.colour}</ListGroupItem>
                 </ListGroup>
-                <Button variant="secondary" onClick={()=>props.buttonfunction(userproduct)}>{props.btnname}</Button>
+                <Button variant="secondary" onClick={()=>{props.buttonfunction(userproduct) 
+                    props.refresh()}}>{props.btnname}</Button>
             </Card.Body>
         </Card>
     )

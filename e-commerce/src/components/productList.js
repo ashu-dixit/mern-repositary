@@ -11,7 +11,20 @@ class Products extends Component {
             newpro:[]
         }
     }
-   
+   refresh(){
+    axios.get(this.props.link)
+    .then((res) => {
+        productlst = res.data
+        //debug
+        // console.log(productlst);
+        this.setState({
+            newpro : productlst.map(
+            product => <div key={product._id} className="card-env"><Card buttonfunction={this.props.buttonfunction} btnname={this.props.btnname} product={product} >
+                </Card>
+            </div>)})
+        
+    })
+   }
     UNSAFE_componentWillMount() {
         //getting product from database
         // when you get null error means u are sending before fetching
@@ -22,7 +35,7 @@ class Products extends Component {
                 // console.log(productlst);
                 this.setState({
                     newpro : productlst.map(
-                    product => <div key={product._id} className="card-env"><Card buttonfunction={this.props.buttonfunction} btnname={this.props.btnname} product={product} >
+                    product => <div key={product._id} className="card-env"><Card refresh={this.refresh.bind(this)} buttonfunction={this.props.buttonfunction} btnname={this.props.btnname} product={product} >
                         </Card>
                     </div>)})
                 
@@ -30,7 +43,7 @@ class Products extends Component {
     }
 
     render() {
-    return (this.state.newpro  )
+    return (this.state.newpro)
     }
 
 }

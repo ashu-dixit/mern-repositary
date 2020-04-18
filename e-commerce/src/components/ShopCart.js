@@ -10,6 +10,19 @@ function Cart() {
     var lst = []
     var newlst = []
 
+    const buttonfunction = function(product){
+        axios.post('/product/removefromcart', {
+        productIdToRemove:product._id
+      })
+      .then(function (response) {
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      }
+    // const buttonfunction = function(product){
+    //     console.log(product._id)
+    // }
     // var newlst=[<div key="1" className="card-env"><Card /></div>, <div key="2" className="card-env"><Card /></div>, <div key="3" className="card-env"><Card /></div>]
     const [show, setShow] = React.useState(false);
 
@@ -44,7 +57,7 @@ function Cart() {
                 <Modal.Body>
                     <div className="overflow-auto">
                         <div className="card-gr-cart">
-                            <Products link="/product/usercart" btnname="Buy Now"></Products>
+                            <Products link="/product/usercart" btnname="Buy Now" buttonfunction={buttonfunction}></Products>
                             </div>
                     </div>
 
