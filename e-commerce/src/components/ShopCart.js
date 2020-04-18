@@ -3,16 +3,27 @@ import { Modal, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import Card from './card'
+import axios from "axios";
+import Products from "./productList";
 
 function Cart() {
-    
-                           
-    var lst=[<div key="1" className="card-env"><Card /></div>, <div key="2" className="card-env"><Card /></div>, <div key="1" className="card-env"><Card /></div>]
+    var lst = []
+    var newlst = []
+
+    // var newlst=[<div key="1" className="card-env"><Card /></div>, <div key="2" className="card-env"><Card /></div>, <div key="3" className="card-env"><Card /></div>]
     const [show, setShow] = React.useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    // axios.get('/product/usercart')
+    //     .then((res) => {
+    //         lst = res.data
+    //         console.log(res.data);
+    //         newlst = lst.map(product => <div key={product._id} className="card-env">
+    //             <Card name={product.productName} discription={product.discription} photo={product.picture} ></Card>
+    //         </div>)
+    //     })
     return (
         <>
             <FontAwesomeIcon onClick={handleShow} icon={faShoppingCart} />
@@ -33,8 +44,8 @@ function Cart() {
                 <Modal.Body>
                     <div className="overflow-auto">
                         <div className="card-gr-cart">
-                        {lst}
-                        </div>
+                            <Products link="/product/usercart" btnname="Buy Now"></Products>
+                            </div>
                     </div>
 
                 </Modal.Body>

@@ -7,7 +7,7 @@ const Schema = mongoose.Schema
 const orderDetail = new Schema({
 
     productID: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.String,
         required: true
     },
     orderNumber: {

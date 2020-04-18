@@ -34,8 +34,10 @@ passport.use(
                 done(null, userdata)
             } else {
                 const data = {
-                    name: Profile.name.givenName,
+                    name: Profile.displayName,
                     googleid:Profile.id,
+                    email:Profile.emails[0].value,
+                    photo:Profile.photos[0].value
                 }
                 const newUser = new users(data)
 
@@ -50,9 +52,6 @@ passport.use(
                     done(null,newUser)
                 })
             }
-        })
-        .then((newUser) => {
-            done(null,newUser)
         })
         .catch(err => console.log("error "+err))
         }

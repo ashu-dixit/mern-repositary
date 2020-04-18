@@ -1,22 +1,24 @@
-import React, { Component } from "react"
-import { Card,ListGroup,Button  } from "react-bootstrap";
+import React from "react"
+import { Card, ListGroup, Button, ListGroupItem } from "react-bootstrap";
 
 
-class card extends Component {
-    render() {
-        return (
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="./images/chair.jpeg" />
-                <Card.Body>
-                    <Card.Title>Chair Pair</Card.Title>
-                    <ListGroup>
-                        
-                    </ListGroup>
-                    <Button variant="secondary">Add to Cart</Button>
-                </Card.Body>
-            </Card>
-        )
-    }
+function card(props) {
+
+    return (
+        <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={props.photo} />
+            <Card.Body>
+                <Card.Title>{props.name}</Card.Title>
+                <ListGroup>
+                    <ListGroupItem>{props.discription.price}</ListGroupItem>
+                    <ListGroupItem>{props.discription.size}</ListGroupItem>
+                    <ListGroupItem>{props.discription.about}</ListGroupItem>
+                    <ListGroupItem>{props.discription.colour}</ListGroupItem>
+                </ListGroup>
+                <Button variant="secondary">{props.btnname}</Button>
+            </Card.Body>
+        </Card>
+    )
 }
 
 export default card

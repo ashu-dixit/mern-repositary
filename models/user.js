@@ -4,24 +4,34 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const user = new Schema({
     name: String,
+    email: String,
     googleid:String,
     Date: {
         type: String,
         default: Date.now
     },
-    cart:[
+    photo: String,
+    cart: [
         {
-            productid:mongoose.Schema.Types.ObjectId,
-            quantity:Number
+            productid: String,
+            quantity: Number
         }
-        
     ],
-    orderList:[
+    orderList: [
         {
-            productid:mongoose.Schema.Types.ObjectId,
-            quantity:Number
+            productid: String,
+            quantity: Number
         }
-    ]
+    ],
+    address: {
+        mobileNumber: Number,
+        country: String,
+        state: String,
+        pincode: Number,
+        addressline1: String,
+        addressline2: String
+    }
+
 })
 //model
 const users = mongoose.model('users', user)

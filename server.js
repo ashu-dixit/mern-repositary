@@ -14,7 +14,7 @@ const keys = require('./config/keys')
 
 const app = express()
 const PORT = process.env.PORT || 3300
-
+app.use(express.urlencoded())
 
 //authentication
 app.use(cookieSession({
@@ -29,6 +29,7 @@ app.get('/',(req,res)=>{
     res.send('<a href="/auth/google" >Login</a>')
 })
 app.use('/auth',require('./routes/authentic'))
+app.use('/product',require('./routes/product'))
 
 
 //mongodb cluster

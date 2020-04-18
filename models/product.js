@@ -8,6 +8,7 @@ const product = new Schema({
         required: true
     },
     discription: {
+        about:String,
         size: String,
         colour: String,
         price: String,
@@ -16,8 +17,8 @@ const product = new Schema({
             default:0
         }
     },
-    supplierid: mongoose.Schema.Types.ObjectId,
-    categoryid: mongoose.Schema.Types.ObjectId,
+    supplierid: String,
+    categoryid: String,
     stock: {
         type: Number,
         required:true
